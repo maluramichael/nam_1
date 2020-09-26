@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Input.gd" type="Script" id=3]
+[ext_resource path="res://Platforms.gd" type="Script" id=4]
+
+[node name="World" type="Node2D"]
+
+[node name="Behaviors" type="Node" parent="."]
+pause_mode = 2
+
+[node name="Input" type="Node" parent="Behaviors"]
+pause_mode = 2
+script = ExtResource( 3 )
+target = NodePath("../../Player")
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0.214951, -0.548264 )
+speed = 800
+jump_speed = -3500
+
+[node name="Platforms" type="Node2D" parent="."]
+script = ExtResource( 4 )
+player_path = NodePath("../Player")
+
+[node name="platform" parent="." instance=ExtResource( 1 )]
+position = Vector2( -3.47717, 138.452 )
